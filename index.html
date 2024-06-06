@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz APp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="quiz">
+            <h1 id="h">Quiz Question</h1>
+            <hr>
+            <div class="option">
+                <ul>
+                    <li id="option1">
+                        <input type="radio" class="opt" value="d" name=" opt">
+                        <label for="">quiz question</label>
+                    </li>
+                    <li id="option2">
+                        <input type="radio"  class="opt" value="d" name=" opt">
+                        <label for="">quiz question</label>
+                    </li>
+                    <li id="option3">
+                        <input type="radio"   class="opt"value="d" name=" opt">
+                        <label for="">quiz question</label>
+                    </li>
+                    <li id="option4">
+                        <input type="radio"   class="opt"value="d" name=" opt">
+                        <label for="">quiz question</label>
+                    </li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <div class="submit">
+                <button onclick="submitval()">submit</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+
+
+</body>
+
+</html>
+
+
+
+<!-- 
+
+{
+    'que': "what is javascript?",
+    'a': "static",
+    'b': "dynamic",
+    'c': "fixed",
+    'd': "sticky" ,
+    'correct':  "b"         
+},
+
+{
+    'que': "what is css",
+    'a': "static",
+    'b': "dynamic",
+    'c': "style",
+    'd': "sticky" ,
+    'correct':  "c"    
+},
+{
+    'que': "what is html",
+    'a': "static",
+    'b': "dynamic",
+    'c': "fixed",
+    'd': "markup" ,
+    'correct':  "d"         
+}
+]
+
+let index = 0;
+let total = question.length;
+let right = 0; wrong = 0;
+const h = document.getElementById("h")
+const optionvaal = document.querySelectorAll(".opt")
+
+const loadquestion = () => {
+const reset = ()=>{
+    optionvaal.forEach((input)=> {
+        input.checked = false;
+    })
+};
+reset();
+
+const endQuiz =()=>{
+   
+    document.querySelector(".quiz").innerHTML = `
+
+    
+    <h2  style = " margin-top: 220px" "text-align: center"
+    "color: white"> Thanku for for your response </h2>
+    <h3> ${right}/ ${total} are correct.</h3> 
+    `
+   
+    // <div style = "display: flex" " justify-content: center" "align-items: center"> </div>
+}
+
+if(index === total){
+    return endQuiz()
+}
+
+
+const data = question[index]
+console.log(data);
+h.innerHTML= `${index + 1}. ${data.que}`;
+// const h = document.getElementById("h").innerHTML = data.que;    (aisa bhi hosakta hai.)
+optionvaal[0].nextElementSibling.innerHTML = data.a;
+optionvaal[1].nextElementSibling.innerHTML = data.b;
+optionvaal[2].nextElementSibling.innerHTML = data.c;
+optionvaal[3].nextElementSibling.innerHTML = data.d;
+}
+loadquestion();
+
+
+
+
+
+const submitval = () =>{
+const data = question[index]
+
+const ans = getanswer();
+if(ans == data){
+    right++;
+}
+else{
+    wrong++;
+}
+index++;
+loadquestion();
+return;
+}
+
+const getanswer = () =>{
+let answer;
+optionvaal.forEach((input)=> {
+    if(input.checked){
+        answer=  input.value;
+    }
+  
+})
+return answer;
+} -->
